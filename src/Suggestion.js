@@ -1,14 +1,20 @@
 import React, { Component } from "react";
 import api from "./api";
+import InterestsList from "./InterestsList";
 
 class Suggestion extends Component {
-  state = { showSearch: false, interests: [] };
+  state = {
+    showSearch: false,
+    interests: []
+  };
 
   searchInterests = e => {
     const searchTerm = e.target.value;
 
-    api.getInterests(e.target.value).then(data => {
-      this.setState({ interests: data });
+    this.setState({ searchTerm }, () => {
+      api.getInterests(this.state.searchTerm).then(data => {
+        this.setState({ interests: data });
+      });
     });
   };
 
@@ -52,7 +58,10 @@ class Suggestion extends Component {
                 placeholder="Search for..."
               />
             </div>
-            {this.state.interests.length}
+            <InterestsList
+              interests={this.state.interests}
+              searchTerm={this.state.searchTerm}
+            />
           </div>
         )}
       </div>

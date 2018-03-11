@@ -1,0 +1,8 @@
+.interest-item {
+  padding: 5px 5px;
+}
+
+.interest-item:hover {
+  background-color: rgba(128, 189, 255, 0.2);
+  color: rgba(128, 189, 255, 1);
+}
