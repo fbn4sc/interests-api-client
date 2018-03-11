@@ -16,7 +16,13 @@ const Interest = props => {
         {name.substring(searchTermIndex, searchTermIndex + searchTerm.length)}
       </strong>
       {name.substring(searchTermIndex + searchTerm.length)}
-      <button type="button" className="button">
+      <button
+        type="button"
+        className="button"
+        onClick={() => {
+          console.log("Are you sure?");
+        }}
+      >
         Remap
       </button>
     </li>
