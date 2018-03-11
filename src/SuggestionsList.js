@@ -17,9 +17,17 @@ class SuggestionsList extends Component {
       <div>
         <h1>Suggestions List</h1>
 
-        <ol>
-          {this.state.suggestions.map(suggestion => <li>{suggestion.name}</li>)}
-        </ol>
+        <div className="container">
+          <div className="row justify-content-sm-center">
+            <div className="col-sm-10 col-md-6">
+              <ol className="list-group">
+                {this.state.suggestions.map(suggestion => (
+                  <li className="list-group-item">{suggestion.name}</li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
