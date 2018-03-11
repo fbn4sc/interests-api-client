@@ -32,7 +32,9 @@ class Suggestion extends Component {
               onClick={() => {
                 this.setState(
                   prevState => ({
-                    showSearch: !prevState.showSearch
+                    showSearch: !prevState.showSearch,
+                    interests: [],
+                    searchTerm: ""
                   }),
                   () => {
                     if (this.state.showSearch) this.input.focus();
