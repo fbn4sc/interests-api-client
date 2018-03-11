@@ -6,10 +6,8 @@ class SuggestionsList extends Component {
   state = { suggestions: [] };
 
   componentDidMount() {
-    const apiHost =
-      process.env.NODE_ENV === "development"
-        ? "http://localhost:3000"
-        : "https://interests-api.herokuapp.com/";
+    const apiHost = process.env.REACT_APP_API_HOST;
+    console.log(process.env);
 
     axios
       .get(`${apiHost}/suggestions`)
