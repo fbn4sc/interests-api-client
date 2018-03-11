@@ -7,7 +7,6 @@ class SuggestionsList extends Component {
 
   componentDidMount() {
     const apiHost = process.env.REACT_APP_API_HOST;
-    console.log(process.env);
 
     axios
       .get(`${apiHost}/suggestions`)
