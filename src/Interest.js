@@ -7,15 +7,18 @@ const Interest = props => {
     .toLowerCase()
     .indexOf(props.searchTerm);
   const name = props.interest.name;
-  const searchTerm = props.searchTerm || "";
+  const searchTerm = props.searchTerm;
 
   return (
-    <li className="interest-item">
+    <li className="interest-item" style={{ overflow: "auto" }}>
       {name.substring(0, searchTermIndex)}
       <strong>
         {name.substring(searchTermIndex, searchTermIndex + searchTerm.length)}
       </strong>
       {name.substring(searchTermIndex + searchTerm.length)}
+      <button type="button" className="button">
+        Remap
+      </button>
     </li>
   );
 };
