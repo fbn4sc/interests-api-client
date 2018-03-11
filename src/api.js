@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const apiHost = process.env.REACT_APP_API_HOST;
+const apiHost = "https://interests-api.herokuapp.com";
 
 module.exports = {
   getInterests: searchTerm => {
