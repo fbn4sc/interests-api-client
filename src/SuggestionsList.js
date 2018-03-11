@@ -17,12 +17,30 @@ class SuggestionsList extends Component {
       <div>
         <h1>Suggestions List</h1>
 
-        <div className="container">
+        <div className="container" style={{ marginBottom: 30 }}>
           <div className="row justify-content-sm-center">
             <div className="col-sm-10 col-md-6">
               <ol className="list-group">
-                {this.state.suggestions.map(suggestion => (
-                  <li className="list-group-item">{suggestion.name}</li>
+                {this.state.suggestions.map((suggestion, i) => (
+                  <li key={i} className="list-group-item">
+                    <div className="row">
+                      <div className="col-9" style={{ wordWrap: "break-word" }}>
+                        {suggestion.name}
+                      </div>
+                      <div
+                        className="col-3 text-right"
+                        style={{ paddingLeft: 0 }}
+                      >
+                        <button
+                          type="button"
+                          className="btn btn-sm"
+                          onClick={() => console.log(suggestion.name)}
+                        >
+                          Remap
+                        </button>
+                      </div>
+                    </div>
+                  </li>
                 ))}
               </ol>
             </div>
