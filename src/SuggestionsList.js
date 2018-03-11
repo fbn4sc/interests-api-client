@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import App from "./App";
+import Suggestion from "./Suggestion";
 
 class SuggestionsList extends Component {
   state = { suggestions: [] };
@@ -25,23 +26,7 @@ class SuggestionsList extends Component {
               <ol className="list-group">
                 {this.state.suggestions.map((suggestion, i) => (
                   <li key={i} className="list-group-item">
-                    <div className="row">
-                      <div className="col-9" style={{ wordWrap: "break-word" }}>
-                        {suggestion.name}
-                      </div>
-                      <div
-                        className="col-3 text-right"
-                        style={{ paddingLeft: 0 }}
-                      >
-                        <button
-                          type="button"
-                          className="btn btn-sm"
-                          onClick={() => console.log(suggestion.name)}
-                        >
-                          Remap
-                        </button>
-                      </div>
-                    </div>
+                    <Suggestion suggestion={suggestion} />
                   </li>
                 ))}
               </ol>
