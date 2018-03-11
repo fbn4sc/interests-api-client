@@ -6,8 +6,13 @@ class SuggestionsList extends Component {
   state = { suggestions: [] };
 
   componentDidMount() {
+    const apiHost =
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:3000"
+        : "https://interests-api.herokuapp.com/";
+
     axios
-      .get("http://localhost:3000/suggestions")
+      .get(`${apiHost}/suggestions`)
       .then(response => this.setState({ suggestions: response.data }))
       .catch(error => console.error(error));
   }
