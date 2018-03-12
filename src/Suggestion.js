@@ -30,7 +30,7 @@ class Suggestion extends Component {
           <div className="col-3 text-right" style={{ paddingLeft: 0 }}>
             <button
               type="button"
-              className="btn btn-sm"
+              className="button"
               onClick={() => {
                 this.setState(
                   prevState => ({
