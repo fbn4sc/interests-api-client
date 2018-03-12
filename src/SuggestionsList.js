@@ -1,18 +1,14 @@
 import React, { Component } from "react";
-import axios from "axios";
 import App from "./App";
 import Suggestion from "./Suggestion";
+import api from "./api";
 
 class SuggestionsList extends Component {
   state = { suggestions: [] };
 
   componentDidMount() {
     const apiHost = process.env.REACT_APP_API_HOST;
-
-    axios
-      .get(`${apiHost}/suggestions`)
-      .then(response => this.setState({ suggestions: response.data }))
-      .catch(error => console.error(error));
+    api.getSuggestions().then(suggestions => this.setState({ suggestions }));
   }
 
   render() {
