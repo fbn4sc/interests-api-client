@@ -12,9 +12,11 @@ class Suggestion extends Component {
     const searchTerm = e.target.value;
 
     this.setState({ searchTerm }, () => {
-      api.getInterests(this.state.searchTerm).then(data => {
-        this.setState({ interests: data });
-      });
+      if (searchTerm.length)
+        api.getInterests(this.state.searchTerm).then(data => {
+          this.setState({ interests: data });
+        });
+      else this.setState({ interests: [] });
     });
   };
 
