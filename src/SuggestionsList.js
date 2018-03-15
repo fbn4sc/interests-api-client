@@ -3,6 +3,7 @@ import App from "./App";
 import Suggestion from "./Suggestion";
 import api from "./api";
 import debounce from "debounce";
+import { remove as removeDiacritics } from "diacritics";
 
 class SuggestionsList extends Component {
   state = { suggestions: [], page: 0, reachedLastPage: false };
@@ -38,6 +39,17 @@ class SuggestionsList extends Component {
     }
   };
 
+  remap = (suggestionName, interestId) => {
+    api.remap(suggestionName, interestId).then(() => {
+      const suggestions = [...this.state.suggestions].filter(
+        s =>
+          removeDiacritics(s.name).toLowerCase() !==
+          removeDiacritics(suggestionName).toLowerCase()
+      );
+      this.setState({ suggestions });
+    });
+  };
+
   render() {
     return (
       <div>
@@ -53,7 +65,7 @@ class SuggestionsList extends Component {
               <ol className="list-group" ref={list => (this.list = list)}>
                 {this.state.suggestions.map((suggestion, i) => (
                   <li key={i} className="list-group-item">
-                    <Suggestion suggestion={suggestion} />
+                    <Suggestion suggestion={suggestion} remap={this.remap} />
                   </li>
                 ))}
               </ol>

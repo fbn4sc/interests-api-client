@@ -17,5 +17,13 @@ module.exports = {
         .get(`${apiHost}/interests?searchTerm=${searchTerm}`)
         .then(response => resolve(response.data));
     });
+  },
+
+  remap: (suggestionName, interestId) => {
+    return new Promise((resolve, reject) => {
+      axios
+        .post(`${apiHost}/remap`, { suggestionName, interestId })
+        .then(response => resolve(response.data));
+    });
   }
 };

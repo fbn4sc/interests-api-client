@@ -12,7 +12,12 @@ const InterestsList = props => {
       }}
     >
       {props.interests.map((interest, i) => (
-        <Interest key={i} interest={interest} searchTerm={props.searchTerm} />
+        <Interest
+          key={i}
+          interest={interest}
+          searchTerm={props.searchTerm}
+          getInterest={props.getInterest}
+        />
       ))}
     </ul>
   );

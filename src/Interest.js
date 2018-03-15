@@ -19,9 +19,7 @@ const Interest = props => {
       <button
         type="button"
         className="button"
-        onClick={() => {
-          console.log("Are you sure?");
-        }}
+        onClick={() => props.getInterest(props.interest.ID)}
       >
         Remap
       </button>

@@ -20,6 +20,11 @@ class Suggestion extends Component {
     });
   };
 
+  getInterest = interestId => {
+    this.setState({ showSearch: false });
+    this.props.remap(this.props.suggestion.name, interestId);
+  };
+
   render() {
     return (
       <div>
@@ -63,8 +68,9 @@ class Suggestion extends Component {
               />
             </div>
             <InterestsList
-              interests={this.state.interests}
+              interests={this.state.interests.slice(0, 5)}
               searchTerm={this.state.searchTerm}
+              getInterest={this.getInterest}
             />
           </div>
         )}
