@@ -3,10 +3,10 @@ const axios = require("axios");
 const apiHost = "https://interests-api.herokuapp.com";
 
 module.exports = {
-  getSuggestions: () => {
+  getSuggestions: (page = 0) => {
     return new Promise((resolve, reject) => {
       axios
-        .get(`${apiHost}/suggestions`)
+        .get(`${apiHost}/suggestions?page=${page}`)
         .then(response => resolve(response.data));
     });
   },
