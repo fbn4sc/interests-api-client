@@ -27,14 +27,14 @@ class SuggestionsList extends Component {
     if (bottom && !this.state.reachedLastPage) {
       const newSuggestions = await this.fetchSuggestions(this.state.page);
 
-      if (newSuggestions.length === 30) {
-        this.setState(prevState => {
-          const suggestions = [...prevState.suggestions, ...newSuggestions];
-          return { suggestions, page: prevState.page + 1 };
-        });
-      } else {
-        this.setState({ reachedLastPage: true });
-      }
+      this.setState(prevState => {
+        const suggestions = [...prevState.suggestions, ...newSuggestions];
+        return {
+          suggestions,
+          page: prevState.page + 1,
+          reachedLastPage: !(newSuggestions.length === 30)
+        };
+      });
     }
   };
 
